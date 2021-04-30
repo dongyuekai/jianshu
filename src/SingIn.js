@@ -12,13 +12,22 @@ import {
   Checkbox
 } from '@chakra-ui/react'
 import { FaUserAlt, FaLock, FaCheck, FaClinicMedical, FaQq, FaWeixin, FaWeibo } from 'react-icons/fa'
+import axios from 'axios'
 
 export default function SingIn() {
   const [phoneOrEmail, setPhoneOrEmail] = useState('')
   const [password, setPassword] = useState('')
 
   function login() {
-
+    const data = {
+      "user": {
+        "email": phoneOrEmail,
+        "password": password
+      }
+    }
+    axios.post('https://conduit.productionready.io/api/users/login', data).then(res => {
+      alert('登录成功')
+    })
   }
 
   return (

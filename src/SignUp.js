@@ -27,20 +27,15 @@ export default function SingUp() {
     } else if (!password) {
       return
     } else {
-      axios({
-        method: 'post',
-        url: 'https://conduit.productionready.io/api/users',
-        data:
-        {
-          "user": {
-            "username": username,
-            "email": email,
-            "password": password
-          }
-
+      const data = {
+        "user": {
+          "username": username,
+          "email": email,
+          "password": password
         }
-      }).then(res => {
-        
+      }
+      axios.post('https://conduit.productionready.io/api/users', data).then(res => {
+        alert('注册成功')
       })
     }
   }
